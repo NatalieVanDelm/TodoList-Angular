@@ -1,9 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { CrudService } from '../../service/crud.service';
 import { Task } from '../../model/task';
-import { Observable } from 'rxjs';
 import { NgFor, CommonModule } from '@angular/common';
 import { FormsModule} from '@angular/forms';
+import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   selector: 'app-dashboard',
@@ -40,9 +40,9 @@ export class DashboardComponent implements OnInit {
 
   addTask() {
     this.taskObj.task_name = this.addTaskValue;
+    this.taskObj.id = uuidv4();
     this.crudService.addTask(this.taskObj).subscribe(res => {
       this.ngOnInit();
-      this.addTaskValue = '';
     }, err => {
         alert(err);
       }

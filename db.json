@@ -1,12 +1,8 @@
 {
   "tasks": [
     {
-      "id": "0",
-      "task_name": "Test2Ook"
-    },
-    {
-      "id": "1",
-      "task_name": "Test2"
+      "id": "eab2a876-d5ab-4e3b-a293-8bf578bc8567",
+      "task_name": "Example of a task."
     }
   ]
 }
