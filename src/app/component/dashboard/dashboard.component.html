@@ -12,20 +12,39 @@
 
                 <div class="shadow">
                     <div class="input-group p-4">
-                        <input class="form-control" placeholder="Enter task">
-                        <button class="btn btn-outline-success" type="button">+</button>
-                      </div>
+                        <input class="form-control" placeholder="Enter task" [(ngModel)]="addTaskValue">
+                        <button class="btn btn-outline-success" type="button" (click)="addTask()">+</button>
+                    </div>
                 </div>
 
                 <h4 class="text-primary mt-4">Tasks : </h4>
 
                 <div style="overflow-y: auto; height: 350px;">
-                    <div class="m-3">
+                    <div class="m-3" *ngFor="let task of taskArr">
                         <div class="p-2 shadow border">
                             <div class="input-group row ps-3">
-                                <div class="card col-md-10 border-0">Hardcoded Task</div>
-                                <button class="btn btn-outline-primary col me-2">e</button>
-                                <button class="btn btn-outline-danger col">X</button>
+                                <div class="card col-md-10 border-0">{{task.task_name}}</div>
+                                <button class="btn btn-outline-primary col me-2" (click)="initEdit(task)" data-bs-toggle="modal" data-bs-target="#editModal">e</button>
+                                <button class="btn btn-outline-danger col" (click)="deleteTask(task)">X</button>
+  
+                                <!-- Modal -->
+                                <div class="modal fade" id="editModal" tabindex="-1" aria-hidden="true">
+                                    <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                        <h1 class="modal-title fs-5" id="editModalLabel">Edit task</h1>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="input-group p-4">
+                                                <input class="form-control" placeholder="Enter task" [(ngModel)]="editTaskValue">
+                                                <button class="btn btn-outline-success" type="button" data-bs-dismiss="modal" (click)="editTask()">Update</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                                <!-- End Modal -->
                             </div>
                         </div>
                     </div>

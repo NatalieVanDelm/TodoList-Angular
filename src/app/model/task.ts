@@ -1,4 +1,4 @@
 export class Task {
-    id: number = 0;
+    id: string = '0';
     task_name: string = '';
 }
